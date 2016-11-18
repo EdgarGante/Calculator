@@ -1,6 +1,6 @@
 # Calculator
 
-Simple and beautiful calculator.
+Simple and beautiful calculator written in swift.
 
 <h2>Updated for Swift 3.0</h2>
 
