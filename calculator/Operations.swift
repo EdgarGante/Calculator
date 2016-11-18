@@ -13,6 +13,7 @@ class Operations {
     private var pending: PendingBinaryOperationInfo?
     private var accumulator: Double = 0.0
     var result: Double {
+     
         get {
             return accumulator
         }
@@ -67,8 +68,5 @@ class Operations {
     func setOperand(operand: Double) {
         accumulator = operand
     }
-    
-    
-    
     
 }

@@ -39,7 +39,7 @@
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="3" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="zwT-e4-Tmm">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="zwT-e4-Tmm">
                                                         <rect key="frame" x="0.0" y="30" width="299" height="74"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="90"/>
                                                         <color key="textColor" red="0.99607843137254903" green="0.9137254901960784" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
@@ -311,7 +311,7 @@
                                                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         </state>
                                                                         <connections>
-                                                                            <action selector="processOperationWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nab-qh-8QP"/>
+                                                                            <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ug8-R5-hrC"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>

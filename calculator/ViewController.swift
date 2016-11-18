@@ -17,20 +17,25 @@ class ViewController: UIViewController {
     @IBOutlet private weak var outputLabel: UILabel!
     @IBOutlet private weak var upperOutputLabel: UILabel!
     
-    private var leftValueString = ""
-    private var rightValueString = ""
     private var btnSound: AVAudioPlayer!
     private var userIsTyping = false
     private var calculator = Operations()
     
     private var privatedisplayValue: Double {
         get {
-            return Double(outputLabel.text!)!
+            
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            return Double(formatter.number(from: outputLabel.text!)!)
+
         }
+        
         set {
             outputLabel.text = String(newValue)
+            userIsTyping = false
         }
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,18 +57,40 @@ class ViewController: UIViewController {
     // MARK: Actions
     @IBAction private func numberPressed(_ sender: UIButton!) {
         playSound()
-        let number = "\(sender.currentTitle!)"
-        if userIsTyping {
-            let runningNumber = outputLabel.text!
-            outputLabel.text = runningNumber + number
+        
+        if outputLabel.text == "0" {
+            outputLabel.text?.removeAll()
+        }
+        
+        let number = sender.currentTitle!
+        
+        if userIsTyping && number != "." || number == "." && outputLabel.text!.range(of: ".") == nil {
+            outputLabel.text = outputLabel.text! + number
+        } else if number == "." {
+            outputLabel.text = "0" + number
         } else {
             outputLabel.text = number
         }
         userIsTyping = true
+        
     }
     
     @IBAction private func onCleanButtonPressed(_ sender: UIButton) {
         restart()
+    }
+    
+    @IBAction private func processOperation(sender: UIButton) {
+        playSound()
+        
+        if userIsTyping {
+            calculator.setOperand(operand: privatedisplayValue)
+        }
+        userIsTyping = false
+        if let mathematicalSymbol = sender.currentTitle {
+            calculator.performOperation(symbol: mathematicalSymbol)
+        }
+        
+        privatedisplayValue = calculator.result
     }
     
     //MARK: Methods
@@ -81,25 +108,18 @@ class ViewController: UIViewController {
     }
     
     private func  cleanDisplay() {
-        leftValueString = ""
-        rightValueString = ""
         outputLabel.text = "0"
         upperOutputLabel.text = ""
     }
     
-    //MARK: Actions
-    @IBAction private func processOperation(sender: UIButton) {
-        playSound()
-        
-        if userIsTyping {
-            calculator.setOperand(operand: privatedisplayValue)
-        }
-        userIsTyping = false
-        if let mathematicalSymbol = sender.currentTitle {
-            calculator.performOperation(symbol: mathematicalSymbol)
-        }
-        
-        privatedisplayValue = calculator.result
-    }
+    
+    
 }
+
+
+
+
+
+
+
 
