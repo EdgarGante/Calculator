@@ -1,6 +1,6 @@
-# Calculator
+# Calculator iOS
 
-Simple and beautiful calculator written in swift.
+Simple and beautiful calculator written in swift 3.
 
 <h2>Updated for Swift 3.0</h2>
 
